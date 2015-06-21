@@ -39,7 +39,7 @@ public class NMBExpectation : NSObject {
 
     public var to: (matcher: NMBMatcher) -> Void {
         return ({ matcher in
-            expect(file: self._file, line: self._line){ self._actualBlock() as NSObject? }.to(
+            expect(self._file, line: self._line){ self._actualBlock() as NSObject? }.to(
                 ObjCMatcherWrapper(matcher: matcher, to: "to", toNot: "to not")
             )
         })
@@ -47,7 +47,7 @@ public class NMBExpectation : NSObject {
 
     public var toNot: (matcher: NMBMatcher) -> Void {
         return ({ matcher in
-            expect(file: self._file, line: self._line){ self._actualBlock() as NSObject? }.toNot(
+            expect(self._file, line: self._line){ self._actualBlock() as NSObject? }.toNot(
                 ObjCMatcherWrapper(matcher: matcher, to: "to", toNot: "to not")
             )
         })
@@ -57,7 +57,7 @@ public class NMBExpectation : NSObject {
 
     public var toEventually: (matcher: NMBMatcher) -> Void {
         return ({ matcher in
-            expect(file: self._file, line: self._line){ self._actualBlock() as NSObject? }.toEventually(
+            expect(self._file, line: self._line){ self._actualBlock() as NSObject? }.toEventually(
                 ObjCMatcherWrapper(matcher: matcher, to: "to", toNot: "to not"),
                 timeout: self._timeout
             )
@@ -66,7 +66,7 @@ public class NMBExpectation : NSObject {
 
     public var toEventuallyNot: (matcher: NMBMatcher) -> Void {
         return ({ matcher in
-            expect(file: self._file, line: self._line){ self._actualBlock() as NSObject? }.toEventuallyNot(
+            expect(self._file, line: self._line){ self._actualBlock() as NSObject? }.toEventuallyNot(
                 ObjCMatcherWrapper(matcher: matcher, to: "to", toNot: "to not"),
                 timeout: self._timeout
             )

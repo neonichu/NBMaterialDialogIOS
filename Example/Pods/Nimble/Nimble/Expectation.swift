@@ -8,7 +8,7 @@ public struct Expectation<T> {
     }
 
     public func to<U where U: Matcher, U.ValueType == T>(matcher: U) {
-        var msg = FailureMessage()
+        let msg = FailureMessage()
         let pass = matcher.matches(expression, failureMessage: msg)
         if msg.actualValue == "" {
             msg.actualValue = "<\(stringify(expression.evaluate()))>"
@@ -17,7 +17,7 @@ public struct Expectation<T> {
     }
 
     public func toNot<U where U: Matcher, U.ValueType == T>(matcher: U) {
-        var msg = FailureMessage()
+        let msg = FailureMessage()
         let pass = matcher.doesNotMatch(expression, failureMessage: msg)
         if msg.actualValue == "" {
             msg.actualValue = "<\(stringify(expression.evaluate()))>"

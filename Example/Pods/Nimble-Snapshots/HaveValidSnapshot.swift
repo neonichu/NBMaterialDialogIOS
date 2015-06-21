@@ -37,13 +37,18 @@ extension UIView : Snapshotable {
     }
 
     class func compareSnapshot(instance: Snapshotable, snapshot: String, record: Bool, referenceDirectory: String) -> Bool {
-        var snapshotController: FBSnapshotTestController = FBSnapshotTestController(testName: _testFileName())
+        let snapshotController: FBSnapshotTestController = FBSnapshotTestController(testName: _testFileName())
         snapshotController.recordMode = record
         snapshotController.referenceImagesDirectory = referenceDirectory
 
         assert(snapshotController.referenceImagesDirectory != nil, "Missing value for referenceImagesDirectory - Call FBSnapshotTest.setReferenceImagesDirectory(FB_REFERENCE_IMAGE_DIR)")
 
-        return snapshotController.compareSnapshotOfView(instance.snapshotObject, selector: Selector(snapshot), identifier: nil, error: nil)
+        do {
+            try snapshotController.compareSnapshotOfView(instance.snapshotObject, selector: Selector(snapshot), identifier: nil)
+            return true
+        } catch _ {
+            return false
+        }
     }
 }
 

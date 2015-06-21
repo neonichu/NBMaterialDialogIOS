@@ -143,7 +143,7 @@
     /**
     Start or stop animating the indicator
     
-    :param: animate BOOL
+    - parameter animate: BOOL
     */
     public func setAnimating(animate: Bool) {
         animate ? startAnimating() : stopAnimating()

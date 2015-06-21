@@ -1,6 +1,6 @@
 import Foundation
 
-internal func beBool(#expectedValue: BooleanType, #stringValue: String, #falseMatchesNil: Bool) -> MatcherFunc<BooleanType> {
+internal func beBool(expectedValue expectedValue: BooleanType, stringValue: String, falseMatchesNil: Bool) -> MatcherFunc<BooleanType> {
     return MatcherFunc { actualExpression, failureMessage in
         failureMessage.postfixMessage = "be \(stringValue)"
         let actual = actualExpression.evaluate()

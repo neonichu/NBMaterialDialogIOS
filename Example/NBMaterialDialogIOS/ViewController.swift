@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     /**
     Lets you run a block of code after a delay defined in seconds
 
-    :param: delay The delay defined in seconds
-    :param: closure The block of code you wish to run
+    - parameter delay: The delay defined in seconds
+    - parameter closure: The block of code you wish to run
     */
     private func delay(delay: Double, closure: (Void) -> Void) {
         dispatch_after(
